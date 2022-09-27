@@ -1,0 +1,34 @@
+﻿@model Crm.EntityLayer.Concrete.Employee
+@{
+    ViewData["Title"] = "AddEmployee";
+    Layout = "~/Views/Shared/_CrmLayout.cshtml";
+}
+
+<form method="post">
+
+    <label>Personel Adı</label>
+    <input type="text" asp-for="EmployeeName" class="form-control" />
+    <br />
+
+    <label>Personel Soyadı</label>
+    <input type="text" asp-for="EmployeeSurname" class="form-control" />
+    <br />
+
+    <label>Personel Mail</label>
+    <input type="text" asp-for="EmployeeMail" class="form-control" />
+    <br />
+
+    <label>Personel Şifresi</label>
+    <input type="password" asp-for="EmployeePassword" class="form-control" />
+    <br />
+
+    <label>Personel Cinsiyet</label>
+    <input type="text" asp-for="EmployeeGender" class="form-control" />
+    <br />
+
+    @*<label>Doğum Tarihi</label>
+    <input type="text" asp-for="EmployeeBirth" class="form-control" />
+    <br />*@
+
+    <button class="btn btn-outline-info">Personeli Ekle</button>
+</form>

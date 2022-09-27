@@ -1,0 +1,36 @@
+﻿@using Crm.EntityLayer.Concrete
+@model List<Employee>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CrmLayout.cshtml";
+}
+
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Mail</th>
+        <th>Cinsiyet</th>
+        <th>Doğum Tarihi</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.EmployeeID</td>
+            <td>@item.EmployeeName</td>
+            <td>@item.EmployeeSurname</td>
+            <td>@item.EmployeeMail</td>
+            <td>@item.EmployeeGender</td>
+            <td>@item.EmployeeBirth</td>
+            <td><a href="#" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="#" class="btn btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="#" class="btn btn-outline-primary">Yeni Çalışan Girişi</a>
+
