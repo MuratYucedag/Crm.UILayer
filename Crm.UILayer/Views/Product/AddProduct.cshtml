@@ -1,0 +1,34 @@
+﻿@model Crm.EntityLayer.Concrete.Product
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Views/Shared/_CrmLayout.cshtml";
+}
+<br />
+<form method="post">
+
+    <label>Ürün Adı</label>
+    <input type="text" asp-for="ProductName" class="form-control" />
+    <br />
+
+    <label>Ürün Alış Fiyatı</label>
+    <input type="text" asp-for="ProductPurchasePrice" class="form-control" />
+    <br />
+
+    <label>Ürün Satış Fiyatı</label>
+    <input type="text" asp-for="ProductSalePrice" class="form-control" />
+    <br />
+
+    <label>Ürün Stok Sayısı</label>
+    <input type="text" asp-for="ProductStock" class="form-control" />
+    <br />
+
+    <label>Ürün Kodu</label>
+    <input type="text" asp-for="ProductCode" class="form-control" />
+    <br />
+
+    <label>Ürün Kategorisi</label>
+    @Html.DropDownListFor(x => x.Category, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-outline-primary">Ürünü Ekle</button>
+</form>

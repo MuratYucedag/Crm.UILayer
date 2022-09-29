@@ -33,6 +33,11 @@ namespace Crm.BusinessLayer.Concrete
             return _productDal.GetListAll();
         }
 
+        public List<Product> TGetListProductWithCategory()
+        {
+            return _productDal.GetListProductWithCategory();
+        }
+
         public void TInsert(Product t)
         {
             _productDal.Insert(t);

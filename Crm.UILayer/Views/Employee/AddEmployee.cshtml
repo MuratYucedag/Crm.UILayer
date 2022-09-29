@@ -8,27 +8,28 @@
 
     <label>Personel Adı</label>
     <input type="text" asp-for="EmployeeName" class="form-control" />
+    <span asp-validation-for="EmployeeName" class="text-danger"></span>
     <br />
 
     <label>Personel Soyadı</label>
     <input type="text" asp-for="EmployeeSurname" class="form-control" />
+    <span asp-validation-for="EmployeeSurname" class="text-danger"></span>
     <br />
 
     <label>Personel Mail</label>
     <input type="text" asp-for="EmployeeMail" class="form-control" />
+    <span asp-validation-for="EmployeeMail" class="text-danger"></span>
     <br />
 
     <label>Personel Şifresi</label>
     <input type="password" asp-for="EmployeePassword" class="form-control" />
+    <span asp-validation-for="EmployeePassword" class="text-danger"></span>
     <br />
 
     <label>Personel Cinsiyet</label>
     <input type="text" asp-for="EmployeeGender" class="form-control" />
+    <span asp-validation-for="EmployeeGender" class="text-danger"></span>
     <br />
-
-    @*<label>Doğum Tarihi</label>
-    <input type="text" asp-for="EmployeeBirth" class="form-control" />
-    <br />*@
 
     <button class="btn btn-outline-info">Personeli Ekle</button>
 </form>
