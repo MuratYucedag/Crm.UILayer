@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_CrmLayout.cshtml";
 }
 
+@{ 
+    string cinsiyet;
+    int sayac = 0;
+}
+
 <br />
 
 <table class="table table-bordered">
@@ -14,23 +19,31 @@
         <th>Soyad</th>
         <th>Mail</th>
         <th>Cinsiyet</th>
-        <th>Doğum Tarihi</th>
         <th>Sil</th>
         <th>Düzenle</th>
     </tr>
     @foreach (var item in Model)
     {
+        if (item.EmployeeGender == "Erkek")
+        {
+            cinsiyet = "color: blue; font - weight:bold";
+        }
+        else
+        {
+            cinsiyet = "color: red; font - weight:bold";
+        }
+
+        sayac++;
+
         <tr>
-            <td>@item.EmployeeID</td>
+            <td>@sayac</td>
             <td>@item.EmployeeName</td>
             <td>@item.EmployeeSurname</td>
             <td>@item.EmployeeMail</td>
-            <td>@item.EmployeeGender</td>
-            @*<td>@item.EmployeeBirth</td>*@
+            <td><span style="@cinsiyet">@item.EmployeeGender</span></td>
             <td><a href="#" class="btn btn-outline-danger">Sil</a></td>
             <td><a href="#" class="btn btn-outline-success">Güncelle</a></td>
         </tr>
     }
 </table>
 <a href="#" class="btn btn-outline-primary">Yeni Çalışan Girişi</a>
-

@@ -1,5 +1,7 @@
-﻿using Crm.BusinessLayer.Concrete;
+﻿using Crm.BusinessLayer.Abstact;
+using Crm.BusinessLayer.Concrete;
 using Crm.BusinessLayer.ValidationRules;
+using Crm.DataAccessLayer.Abstract;
 using Crm.DataAccessLayer.EntityFramework;
 using Crm.EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -13,11 +15,16 @@ namespace Crm.UILayer.Controllers
 {
     public class EmployeeController : Controller
     {
-        //IOC
-        EmployeeManager employeeManager = new EmployeeManager(new EfEmployeeDal()); 
+        private readonly IEmployeeService _employeeService;
+
+        public EmployeeController(IEmployeeService employeeService)
+        {
+            _employeeService = employeeService;
+        }
+
         public IActionResult Index()
         {
-            var values = employeeManager.TGetListAll();
+            var values = _employeeService.TGetListAll();
             return View(values);
         }
 
@@ -34,7 +41,7 @@ namespace Crm.UILayer.Controllers
             ValidationResult result = validationRules.Validate(employee);
             if (result.IsValid)
             {
-                employeeManager.TInsert(employee);
+                _employeeService.TInsert(employee);
                 return RedirectToAction("Index");
             }
             else
@@ -48,3 +55,11 @@ namespace Crm.UILayer.Controllers
         }
     }
 }
+/*
+ view component
+identity
+login
+authorize
+rolleme
+arama işlemi
+ */

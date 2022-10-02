@@ -3,83 +3,40 @@
     Layout = null;
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-body {
-  margin: 0;
-  font-family: "Lato", sans-serif;
-}
 
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-}
+@Html.Partial("/Views/AdminLayout/PartialHead.CsHtml")
 
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
-}
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
 
-.sidebar a.active {
-  background-color: #04AA6D;
-  color: white;
-}
+        @Html.Partial("/Views/AdminLayout/PartialNavbar.CsHtml")
 
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-}
+        @Html.Partial("/Views/AdminLayout/PartialSideBar.CsHtml")
 
-div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
-}
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            @RenderBody()
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
 
-@@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
-}
+        @Html.Partial("/Views/AdminLayout/PartialFooter.CsHtml")
 
-@@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
-}
-    </style>
-</head>
-<body>
-
-    <div class="sidebar">
-        <a href="#home">Kategoriler</a>
-        <a href="#news">Müşteriler</a>
-        <a href="#contact">Ürünler</a>
-        <a href="/Employee/Index/">Çalışanlar</a>
-        <a href="#about">Roller</a>
-        <a href="#about">Ayarlar</a>
     </div>
-
-    <div class="content">
-        @RenderBody()
-    </div>
-
+    @Html.Partial("/Views/AdminLayout/PartialScript.CsHtml")
 </body>
 </html>
