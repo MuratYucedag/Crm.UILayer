@@ -31,8 +31,4 @@
     <ProjectReference Include="..\Crm.EntityLayer\Crm.EntityLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewComponent\" />
-  </ItemGroup>
-
 </Project>

@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CrmLayout.cshtml";
+}
+
+<h1>İstatistikler</h1>
+
+@await Component.InvokeAsync("Widgets") 
+<br />
+@await Component.InvokeAsync("Chart") 
