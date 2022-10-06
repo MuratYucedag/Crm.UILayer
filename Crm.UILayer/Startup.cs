@@ -1,7 +1,9 @@
 using Crm.BusinessLayer.Abstact;
 using Crm.BusinessLayer.Concrete;
 using Crm.DataAccessLayer.Abstract;
+using Crm.DataAccessLayer.Concrete;
 using Crm.DataAccessLayer.EntityFramework;
+using Crm.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +31,17 @@ namespace Crm.UILayer
         {
             services.AddScoped<IEmployeeService, EmployeeManager>();
             services.AddScoped<IEmployeeDal, EfEmployeeDal>();
+
+            services.AddDbContext<Context>();
+            services.AddIdentity<AppUser, AppRole>(x=>
+            {
+                x.Password.RequireUppercase = false;
+                x.Password.RequireNonAlphanumeric = false;
+                x.Password.RequiredLength = 3;
+            })
+                
+                .AddEntityFrameworkStores<Context>();
+
             services.AddControllersWithViews();
         }
 

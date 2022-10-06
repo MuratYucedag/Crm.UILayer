@@ -1,4 +1,5 @@
-﻿using Crm.BusinessLayer.Concrete;
+﻿using Crm.BusinessLayer.Abstact;
+using Crm.BusinessLayer.Concrete;
 using Crm.DataAccessLayer.EntityFramework;
 using Crm.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ namespace Crm.UILayer.Controllers
 {
     public class ProductController : Controller
     {
-        ProductManager productManager = new ProductManager(new EfProductDal());
+        IProductService productManager = new ProductManager(new EfProductDal());
         CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
         public IActionResult Index()
         {
