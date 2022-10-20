@@ -1,0 +1,28 @@
+﻿@model List<Crm.EntityLayer.Concrete.Message>
+@{
+    ViewData["Title"] = "Inbox";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h1>Gelen Kutusu</h1>
+
+Hoşgeldiniz: @ViewBag.v
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Gönderen</th>
+        <th>Konu</th>
+        <th>Mesajı Aç</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MessageID</td>
+            <td>@item.SenderName</td>
+            <td>@item.Subject</td>
+            <td><a href="#" class="btn btn-primary">Mesajı Aç</a></td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,21 @@
+﻿@model Crm.EntityLayer.Concrete.Message
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h1>Yeni Mesaj Sayfası</h1>
+<div class="container">
+    <form method="post">
+        <label>Alıcı Mail</label>
+        <input type="text" asp-for="ReceiverMail" class="form-control" />
+        <br />
+        <label>Başlık</label>
+        <input type="text" asp-for="Subject" class="form-control" />
+        <br />
+        <label>Mesaj</label>
+        <input type="text" asp-for="MessageContent" class="form-control" />
+        <br />
+        <button class="btn btn-warning">Gönder</button>
+    </form>
+</div>

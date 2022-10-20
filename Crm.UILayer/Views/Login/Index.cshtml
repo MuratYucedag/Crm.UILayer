@@ -1,6 +1,17 @@
-﻿
+﻿@model Crm.UILayer.Models.UserSignInModel
 @{
     Layout = null;
 }
-
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 <h3>Login Sayfası</h3>
+<div class="container">
+    <form method="post">
+        <label>Kullanıcı Adınız</label>
+        <input type="text" asp-for="Username" class="form-control" />
+        <br />
+        <label>Şifreniz</label>
+        <input type="text" asp-for="Password" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Giriş Yap</button>
+    </form>
+</div>
