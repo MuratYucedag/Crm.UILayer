@@ -1,0 +1,33 @@
+﻿@model Crm.EntityLayer.Concrete.AppUser
+@{
+    ViewData["Title"] = "EditUser";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h1>Kullanıcı Bilgileri Düzenleme Sayfası</h1>
+<br />
+<form method="post">
+    <label>Ad</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+    <label>Soyad</label>
+    <input type="text" asp-for="Surname" class="form-control" />
+    <br />
+    <label>Cinsiyet</label>
+    <input type="text" asp-for="Gender" class="form-control" />
+    <br />
+    <label>Resim Yolu</label>
+    <input type="text" asp-for="ImageUrl" class="form-control" />
+    <br />
+    <label>Mail Adresi</label>
+    <input type="text" asp-for="Email" class="form-control" />
+    <br />
+    <label>Telefon Numarası</label>
+    <input type="text" asp-for="PhoneNumber" class="form-control" />
+    <br />
+    <label>Şifreniz</label>
+    <input type="text" asp-for="PasswordHash" class="form-control" />
+    <br />
+    <button class="btn btn-primary">Bilgileri Güncelle</button>
+</form>
+

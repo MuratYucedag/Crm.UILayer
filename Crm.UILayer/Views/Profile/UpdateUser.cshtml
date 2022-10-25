@@ -1,0 +1,36 @@
+﻿@model Crm.UILayer.Models.UserEditViewModel
+@{
+    ViewData["Title"] = "UpdateUser";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h1>Kullanıcı Bilgileri Düzenleme Sayfası 2</h1>
+<br />
+<form method="post" enctype="multipart/form-data">
+    <label>Ad</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+    <label>Soyad</label>
+    <input type="text" asp-for="Surname" class="form-control" />
+    <br />
+    <label>Resim Yolu</label>
+    <input type="text" asp-for="ImageUrl" class="form-control" />
+    <br />
+    <label>Mail Adresi</label>
+    <input type="text" asp-for="Email" class="form-control" />
+    <br />
+    <label>Telefon Numarası</label>
+    <input type="text" asp-for="Phone" class="form-control" />
+    <br />
+    <label>Şifreniz</label>
+    <input type="text" asp-for="Password" class="form-control" />
+    <br />
+    <label>Şifreniz Tekrar</label>
+    <input type="text" asp-for="ConfirmPassword" class="form-control" />
+    <br />
+    <input type="file" asp-for="Image" class="form-control" />
+    <br />
+    <button class="btn btn-primary">Bilgileri Güncelle</button>
+    <br />
+    <div asp-validation-summary="ModelOnly"></div>
+</form>
