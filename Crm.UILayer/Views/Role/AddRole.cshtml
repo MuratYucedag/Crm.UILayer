@@ -1,0 +1,14 @@
+﻿@model Crm.EntityLayer.Concrete.AppRole
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h1>Role Ekleme Sayfası</h1>
+
+<form method="post">
+    <label>Rol Adı</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+    <button class="btn btn-info">Rolü Ekle</button>
+</form>

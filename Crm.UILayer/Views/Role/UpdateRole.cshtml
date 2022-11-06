@@ -1,0 +1,13 @@
+﻿@model Crm.EntityLayer.Concrete.AppRole
+@{
+    ViewData["Title"] = "UpdateRole";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h1>Rolü Güncelleme</h1>
+<form method="post">
+    <label>Rol Adı</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+    <button class="btn btn-info">Rolü Düzenle</button>
+</form>

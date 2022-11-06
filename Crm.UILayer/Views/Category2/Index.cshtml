@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+<br />
+<h1>Ajax Kategori İşlemleri</h1>
+<br />
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<button class="btn btn-outline-primary" id="btngetlist">Kategori Listesi</button>
+<button class="btn btn-outline-warning" id="btncategoryadd">Kategori Ekle</button>
+<button class="btn btn-outline-dark" id="btncategoryget">Kategori Getir</button>
+<button class="btn btn-outline-danger" id="btncategorydelete">Kategori Sil</button>
+<button class="btn btn-outline-info" id="btncategoryupdate">Kategori Güncelle</button>
+
+<br />
+<br />
+
+<div id="listcategory">
+
+</div>
+
+<br />
+<br />
+
+<div>
+    <h5>Yeni Kategori Ekleme Paneli</h5>
+    <input type="text" class="form-control" id="txtcategoryname" placeholder="Kategori adını giriniz..." />
+</div>
+
+<br />
+<br />
+
+<div>
+    <h5>ID'ye Göre Kategori Getirme</h5>
+    <input type="text" class="form-control" id="txtcategoryid" placeholder="Kategori ID Giriniz..." />
+</div>
+
+<br />
+<br />
+
+<div id="categorylistbyid">
+
+</div>
+
+<br />
+<br />
+
+<div>
+    <input type="text" class="form-control" id="txtid" placeholder="Silinecek kategori id değerini giriniz" />
+</div>
+
+<br />
+<br />
+
+<div>
+    <input type="text" class="form-control" id="txteditid" placeholder="güncellenecek id" />
+    <br />
+    <input type="text" class="form-control" id="txteditname" placeholder="güncellenecek isim" />
+</div>
+<script>
+
+    $("#btngetlist").click(function () {
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            type: "get",
+            url: "/Category2/ListCategory",
+            success: function (funk) {
+                let values = jQuery.parseJSON(funk);
+                console.log(values);
+
+                let htmls = "<table class=table table-bordered> <tr> <th>Kategori ID</th> <th>Kategori Adı</th> </tr>";
+
+                $.each(values, (Index, value) => {
+                    htmls += `<tr><td>${value.CategoryID}</td><td>${value.CategoryName}</td></tr>`
+                });
+                htmls += "</table>";
+                $("#listcategory").html(htmls);
+            }
+        });
+    });
+
+    $("#btncategoryadd").click(function () {
+        let values = {
+            CategoryName: $("#txtcategoryname").val()
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Category2/AddCategory/",
+            data: values,
+            success: function (funk2) {
+                let result = jQuery.parseJSON(funk2);
+                sweetAlert("Kategori Ekleme İşlemi Başarılıdır");
+            }
+        });
+    });
+
+    $("#btncategoryget").click(x => {
+        let id = $("#txtcategoryid").val();
+
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            type: "get",
+            url: "/Category2/GetByID/",
+            data: { categoryid: id },
+            success: function (funk3) {
+                let result = jQuery.parseJSON(funk3);
+                console.log(result);
+
+                let htmls1 = `<table class=table table-bordered><tr><th>Kategori ID</th><th>Kategori Adı</th></tr><tr><td>${result.CategoryID}</td><td>${result.CategoryName}</td></tr></table>`;
+                $("#categorylistbyid").html(htmls1);
+            }
+        });
+    });
+
+    $("#btncategorydelete").click(x => {
+        let id = $("#txtid").val();
+        $.ajax({
+            url: "/Category2/DeleteCategory/" + id,
+            type: "get",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (funk4) {
+                sweetAlert("Kategori Başarılı Bir Şekilde Silindi");
+            }
+        });
+    });
+
+    $("#btncategoryupdate").click(function () {
+        let values = {
+            CategoryID: $("#txteditid").val(),
+            CategoryName: $("#txteditname").val()
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Category2/UpdateCategory/",
+            data: values,
+            success: function (funk5) {
+                sweetAlert("Güncelleme işlemi yapıldı");
+            }
+        });
+    });
+
+</script>

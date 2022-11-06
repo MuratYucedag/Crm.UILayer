@@ -36,8 +36,12 @@ namespace Crm.UILayer
             services.AddScoped<IMessageService, MessageManager>();
             services.AddScoped<IMessageDal, EfMessageDal>();
 
+            services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<ICategoryDal, EfCategoryDal>();
+
             services.AddDbContext<Context>();
-            services.AddIdentity<AppUser, AppRole>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
+            services.AddIdentity<AppUser, AppRole>()            
+                .AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
 
             services.AddControllersWithViews();
         }

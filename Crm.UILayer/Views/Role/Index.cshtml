@@ -1,0 +1,26 @@
+﻿@model List<Crm.EntityLayer.Concrete.AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h1>Rol Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Rola Adı</th>
+        <th>Rolü Sil</th>
+        <th>Rolü Düzenle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td><a href="/Role/DeleteRole/@item.Id" class="btn btn-danger">Rolü Sil</a></td>
+            <td><a href="/Role/UpdateRole/@item.Id" class="btn btn-success">Rolü Düzenle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Role/AddRole/" class="btn btn-primary">Yeni Rol Girişi</a>

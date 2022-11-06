@@ -1,0 +1,65 @@
+﻿@model List<Crm.EntityLayer.Concrete.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<br />
+<br />
+<button type="button" id="btnmessage" class="btn btn-outline-primary">Mesaj</button>
+<button type="button" id="btnsweetmessage" class="btn btn-outline-primary">Sweet Mesaj</button>
+<button type="button" id="btnsweetmessage2" class="btn btn-outline-primary">Sweet Mesaj2</button>
+<button type="button" id="btngetlist" class="btn btn-outline-warning">Listele</button>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<div id="categorylist">
+
+</div>
+
+
+<script>
+    $("#btnmessage").click(function () {
+        alert("Hellooo");
+    });
+</script>
+
+
+<script>
+    $("#btnsweetmessage").click(function () {
+        swal("Hello world!");
+    });
+</script>
+
+
+<script>
+    $("#btnsweetmessage2").click(function () {
+        swal("Good job!", "You clicked the button!", "success");
+    });
+</script>
+
+<script>
+    $("#btngetlist").click(function () {
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            type: "Get",
+            url: "/Category/ListCategory/",
+
+            success: function (func) {
+                let values = jQuery.parseJSON(func);
+                console.log(values);
+
+                let htmls = "<table class=table table-bordered><tr><th>Kategori ID </th> <th> Kategori Adı </th></tr>";
+
+                $.each(values, (Index, value) => {
+                    htmls += `<tr> <td> ${value.CategoryID}</td> <td> ${value.CategoryName}</td></tr>`
+                });
+                htmls += "</table>";
+                $("#categorylist").html(htmls);
+            }
+        });
+    });
+</script>
