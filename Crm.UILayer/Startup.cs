@@ -1,20 +1,13 @@
-using Crm.BusinessLayer.Abstact;
-using Crm.BusinessLayer.Concrete;
-using Crm.DataAccessLayer.Abstract;
+using Crm.BusinessLayer.DIContainer;
 using Crm.DataAccessLayer.Concrete;
-using Crm.DataAccessLayer.EntityFramework;
 using Crm.EntityLayer.Concrete;
 using Crm.UILayer.Models;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Crm.UILayer
 {
@@ -28,22 +21,21 @@ namespace Crm.UILayer
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
+        //Scoped ile Transient Farký
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IEmployeeService, EmployeeManager>();
-            services.AddScoped<IEmployeeDal, EfEmployeeDal>();
+            services.ContainerDependencies();
 
-            services.AddScoped<IMessageService, MessageManager>();
-            services.AddScoped<IMessageDal, EfMessageDal>();
+            services.AddAutoMapper(typeof(Startup));
 
-            services.AddScoped<ICategoryService, CategoryManager>();
-            services.AddScoped<ICategoryDal, EfCategoryDal>();
+            services.DtoValidator();
 
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>()            
                 .AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

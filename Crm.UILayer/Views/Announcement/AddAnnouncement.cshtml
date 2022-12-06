@@ -1,0 +1,19 @@
+﻿@model Crm.DTO.DTOs.AnnouncementDtos.AnnouncementAddDto
+@{
+    ViewData["Title"] = "AddAnnouncement";
+    Layout = "~/Views/Shared/_CrmLayout.cshtml";
+}
+
+<h1>Yeni Duyuru Ekleme Sayfası</h1>
+
+<form method="post">
+    <label>Duyuru Başlığı</label>
+    <input type="text" class="form-control" asp-for="Title" />
+    <span asp-validation-for="Title" class="text-success"></span>
+    <br />
+    <label>Duyuru Oluşturan</label>
+    <input type="text" class="form-control" asp-for="Publisher" />
+    <span asp-validation-for="Publisher" class="text-success"></span>
+    <br />
+    <button class="btn btn-outline-dark">Duyuruyu Ekle</button>
+</form>
